@@ -1,4 +1,4 @@
-package controller;
+package com.salon.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
