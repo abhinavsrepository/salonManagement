@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-@Autowired
+
+    @Autowired
     private UserRepository userRepository;
 @PostMapping("/api/users")
 //request body will get data from client
