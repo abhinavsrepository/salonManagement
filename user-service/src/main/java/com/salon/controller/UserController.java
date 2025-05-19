@@ -3,32 +3,42 @@ package com.salon.controller;
 import com.salon.modal.User;
 import com.salon.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
-@PostMapping("/api/users")
+
+    @PostMapping("/api/users")
 //request body will get data from client
-public User createUser(@RequestBody User user)
-{
-    return userRepository.save(user);
+    public User createUser(@RequestBody User user) {
+        return userRepository.save(user);
 
-}
-
-@GetMapping("/api/users")
-    public User getUser(){
-        User user = new User();
-        user.setEmail("abhinav@gmail.com");
-        user.setFullName("abhinav");
-        user.setPhone("+91 9511195090");
-        user.setRole("Customer");
-        return user;
     }
+
+    @GetMapping("/api/users")
+    public List<User> getUser() {
+        return userRepository.findAll();
+
+
+    }
+
+
+    public User getUserById(Long id) throws Exception {
+        Optional<User> otp=userRepository.findById(id);
+         if (otp.isPresent()){
+             return otp.get();
+         }
+         throw new Exception("user not found");
+    }
+//    @PutMapping("/api/user/1")
+//    public User updateUser(@RequestBody User user){
+//
+//    }
 }
 

@@ -1,4 +1,5 @@
 package com.salon.modal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -6,18 +7,19 @@ import jakarta.persistence.Id;
 
 
 import java.time.LocalDateTime;
+
 @Entity
 
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String fullName;
     private String email;
-    private String phone ;
-    private  String role;
+    private String phone;
+    private String role;
     private LocalDateTime createdAt;//for creation
 
     private LocalDateTime updateAt;//for updation
@@ -77,8 +79,9 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
     //no args constructor
-    public User(){
+    public User() {
     }
 
     public User(String fullName, String email, String role, String phone, LocalDateTime createdAt, LocalDateTime updateAt) {
