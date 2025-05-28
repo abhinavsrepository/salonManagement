@@ -1,5 +1,6 @@
 package com.salon.service.impl;
 
+import com.salon.exception.UserException;
 import com.salon.modal.User;
 import com.salon.repository.UserRepository;
 import com.salon.service.UserService;
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> otp = userRepository.findById(id);
 
         if (otp.isEmpty()) {
-            throw new Exception("user not found by id" + id);
+            throw new userException("user not found by id" + id);
         }
         User existingUser = otp.get();
         existingUser.setFullName((user.getFullName()
