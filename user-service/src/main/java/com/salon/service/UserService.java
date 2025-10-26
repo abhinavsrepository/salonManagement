@@ -1,14 +1,15 @@
 package com.salon.service;
 
+import com.salon.exception.UserException;
 import com.salon.modal.User;
 
 import java.util.List;
 
 public interface UserService {
     User creatUser(User user);
-    User getUserById(Long id);
+    User getUserById(Long id) throws UserException;
     List<User> getAllUsers();
     void deleteUser(Long id);
-    void updateUser(Long id, User user) throws Exception;
+    User updateUser(Long id, User user) throws UserException;
 
 }

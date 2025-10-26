@@ -45,11 +45,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(Long id, User user) throws userException {
+    public User updateUser(Long id, User user) throws UserException {
         Optional<User> otp = userRepository.findById(id);
 
         if (otp.isEmpty()) {
-            throw new userException("user not found by id" + id);
+            throw new UserException("user not found by id" + id);
         }
         User existingUser = otp.get();
         existingUser.setFullName((user.getFullName()
